@@ -20,6 +20,11 @@ public class Reservation {
         timeMade = pTimeMade;
     }
 
+    //for bubble sort method
+    public int getPriority(){
+        return priority;
+    }
+
     public void print(){
         System.out.println("At " + timeMade + ", a reservation was made for " + numPeople + " people at " + time + ". It has a priority of " + priority);
     }
