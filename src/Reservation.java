@@ -3,7 +3,7 @@ public class Reservation {
 
     public int numPeople;
     public double time;
-    public int priority;
+    public long priority;
     //helpful for finding current time
     //System.currentTimeMillis();
     public long timeMade;
@@ -13,7 +13,7 @@ public class Reservation {
 //        time = 7.00;
 //    }
 
-    public Reservation(int pNumPeople, double pTime, int pPriority, long pTimeMade){
+    public Reservation(int pNumPeople, double pTime, long pPriority, long pTimeMade){
         numPeople = pNumPeople;
         time = pTime;
         priority = pPriority;
@@ -21,9 +21,11 @@ public class Reservation {
     }
 
     //for bubble sort method
-    public int getPriority(){
+    public long getPriority(){
         return priority;
     }
+
+
 
     public void print(){
         System.out.println("At " + timeMade + ", a reservation was made for " + numPeople + " people at " + time + ". It has a priority of " + priority);

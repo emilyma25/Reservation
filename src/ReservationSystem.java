@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class ReservationSystem {
     public Reservation[] reservations;
     public static void main(String[] args) {
@@ -21,21 +22,66 @@ public class ReservationSystem {
 //        for(int i = 3; i < 9; i++){
 //            reservations[i] = new Reservation(2,7.00,2, 6);
 //        }
-        addReservation(5, 5.00, 5, 500);
-        addReservation(10, 10.00, 10, 1000);
-        addReservation(1, 1.00, 1, 100);
-
-        //displayReservations();
-        bubbleSort();
-    }
-    public void addReservation(int numPeople, double time, int priority, long timeMade){
-        Reservation newReservation = new Reservation(numPeople, time, priority, timeMade);
-        for(int i = 0; i < reservations.length; i++){
-            if(reservations[i]==null){
-                reservations[i]=newReservation;
-                break;
+        addReservation(5, 5.00);
+        addReservation(10, 10.00);
+        Scanner scan = new Scanner(System.in);
+        System.out.println("what is your name?");
+        String name = scan.nextLine();
+        boolean g = true;
+        while(g==true) {
+            System.out.println("hello, " + name + "! How can I help you?");
+            System.out.println("Type 1 to add a reservation, 2 to view reservations, and 3 to sort the reservations for the top priority");
+            String menuChoice = scan.nextLine();
+            System.out.println(menuChoice);
+            if (menuChoice.equals("1")) {
+                System.out.println("Please type the number of people in your party");
+                String numPeople = scan.nextLine();
+                int intNumPeople = Integer.valueOf(numPeople);
+                System.out.println(intNumPeople + " people");
+                System.out.println("Please type the time you'd like to make a reservation for");
+                String time = scan.nextLine();
+                System.out.println(time + " time");
+                //add reservation
+            } else if (menuChoice.equals("2")) {
+                displayReservations();
+            } else if (menuChoice.equals("3")) {
+                bubbleSort();
+            } else {
+                System.out.println("Sorry, " + menuChoice + " is not a choice");
+            }
+            //ask if they want to continue, if not then set boolean g to false
+            System.out.println("would you like to continue? type 'yes or 'no'");
+            String continueOrNot = scan.nextLine();
+            if (continueOrNot.equals("yes")){
+                //stuff
+            } else if (continueOrNot.equals("no")){
+                //stuff
+            }else{
+                //stuff
             }
         }
+        addReservation(5, 5.00);
+        addReservation(10, 10.00);
+
+    }
+    public void addReservation(int numPeople, double time){
+        long timeMade = System.currentTimeMillis();
+        long priority = System.currentTimeMillis();
+        if (reservations.length==10){
+            System.out.println("sorry, there is no more available space. please try again later");
+        }else {
+            Reservation newReservation = new Reservation(numPeople, time, priority, timeMade);
+            for (int i = 0; i < reservations.length; i++) {
+                if (reservations[i] == null) {
+                    reservations[i] = newReservation;
+                    break;
+                }
+            }
+        }
+    }
+
+    public void priorityToInt(){
+
     }
 
     public void displayReservations(){
