@@ -1,3 +1,8 @@
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 public class Reservation {
     //this will help me make reservation objects
 
@@ -7,6 +12,7 @@ public class Reservation {
     //helpful for finding current time
     //System.currentTimeMillis();
     public long timeMade;
+
 
 //    public Reservation(){
 //        numPeople = 8;
@@ -25,10 +31,16 @@ public class Reservation {
         return priority;
     }
 
-
-
     public void print(){
-        System.out.println("At " + timeMade + ", a reservation was made for " + numPeople + " people at " + time + ". It has a priority of " + priority);
+        Date estDate = new Date(timeMade);
+
+        //get rid of date and only keep time
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+
+        //format time in est
+        //timeFormat.setTimeZone(TimeZone.getTimeZone("EST"));
+
+        System.out.println("At " + timeFormat.format(estDate) + ", a reservation was made for a party of " + numPeople + " at " + time + ".");
     }
 
 }
